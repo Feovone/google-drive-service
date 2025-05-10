@@ -18,6 +18,8 @@ services:
       - db
     env_file:
       - .env
+    volumes:
+      - ./credentials.json:/app/credentials.json:ro
 
 volumes:
   db_data:

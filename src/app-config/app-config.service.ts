@@ -41,6 +41,26 @@ export class AppConfigService {
     };
   }
 
+  get fileValidationConfig() {
+    return {
+      maxUploadSize: this.getNumber('FILE_VALIDATION_MAX_UPLOAD_SIZE'),
+    };
+  }
+
+  get googleDriveConfig() {
+    return {
+      folderId: this.getString('GOOGLE_DRIVE_FOLDER_ID'),
+      folderName: this.getString('GOOGLE_DRIVE_FOLDER_NAME'),
+      credentialsPath: path.resolve(
+        process.cwd(),
+        this.getString('GOOGLE_CREDENTIALS_FILE_NAME'),
+      ),
+      scopes: this.getArray('GOOGLE_DRIVE_SCOPES'),
+      linkTemplate: this.getString('GOOGLE_DRIVE_LINK_TEMPLATE'),
+      makeNewPublic: this.getBoolean('GOOGLE_DRIVE_MAKE_NEW_FILE_PUBLIC'),
+    };
+  }
+
   private get(key: string): string {
     const value = this.configService.get<string>(key);
 

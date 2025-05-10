@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppConfigModule } from './app-config/app-config.module';
 import { AppConfigService } from './app-config/app-config.service';
+import { FilesModule } from './modules/files/files.module';
+import { IntegrationModule } from './modules/integrations/integrations.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { AppConfigService } from './app-config/app-config.service';
         configService.postgresConfig,
       inject: [AppConfigService],
     }),
+    FilesModule,
+    IntegrationModule,
   ],
   controllers: [],
   providers: [],
