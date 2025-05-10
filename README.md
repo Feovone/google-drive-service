@@ -32,3 +32,49 @@ DB_DATABASE=drive_uploader
 
 ```bash
 docker-compose up --build
+```
+
+## API Endpoints
+### POST /files/upload-from-links
+Request
+```json
+{
+  "urls": [
+    "https://example.com/photo.jpg"
+  ]
+}
+```
+Response
+```json
+[
+  {
+    "fileName": "photo.jpg",
+    "mimeType": "image/jpeg",
+    "driveId": "1a2b3c...",
+    "webViewLink": "https://drive.google.com/file/d/1a2b3c.../view",
+    "status": "SUCCESS"
+  }
+]
+```
+
+### GET /files
+Response
+```json
+[
+     {
+        "id": "5effe758-d5ed-47ca-962c-035ce3ae511d",
+        "fileName": "photo.jpg",
+        "mimeType": "image/jpeg",
+        "status": "SUCCESS",
+        "driveId":"1a2b3c...",
+        "createdAt": "2025-05-10T18:24:25.019Z",
+        "url": "https://drive.google.com/file/d/1a2b3c.../view"
+    }
+]
+```
+## Technologies
+1. NestJS + CQRS
+2. PostgreSQL
+3. Google Drive API
+4. Axios (streaming)
+5. Docker Compose
